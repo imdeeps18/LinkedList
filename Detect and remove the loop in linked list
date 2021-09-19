@@ -1,0 +1,43 @@
+class Solution
+{
+    public static void delete(Node head, int c){
+        Node p = head;
+        Node s = head;
+        while(c>1){
+            s=s.next;
+            c--;
+        }
+        while(s.next!=p){
+            p=p.next;
+            s=s.next;
+        }
+        s.next=null;
+    }
+   
+    //Function to remove a loop in the linked list.
+    public static void removeLoop(Node head){
+        // code here
+        // remove the loop without losing any nodes
+        if(head.next==head)
+            head.next=null;
+        if(head.next==null)
+            return;
+        Node p = head;
+        Node q = head;
+        Node temp = null;
+        int c=0;
+        while(q!=null && p!=null && p.next!=null){
+            q = q.next;
+            p = p.next.next;
+            if(p==q){
+                temp = p;
+                c=1;
+                while(temp.next!=p){
+                    c++;
+                    temp=temp.next;
+                }
+                delete(head,c);
+            }
+        }
+    }
+}
