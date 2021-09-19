@@ -1,0 +1,18 @@
+class Solution
+{
+    void rearrangeEvenOdd(Node head)
+    {
+        if(head.next==null || head.next.next==null)
+            return;
+        Node p = head;
+        Node q = head.next;
+        Node evn = head.next;
+        while(p.next!=null && p.next.next!=null){
+            p.next = q.next;
+            p = p.next;
+            q.next = p.next;
+            q = q.next;
+        }
+        p.next = evn;
+     }
+}
