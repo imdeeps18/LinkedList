@@ -1,0 +1,23 @@
+class Gfg {
+    Node rotateP (Node head, int p){
+        //Write your code here
+        
+        Node t = head;
+        Node root = null;
+        
+        while(p>1){
+            t=t.next;
+            p--;
+        }
+        root = t.next;
+        t.next=null;
+        root.prev=null;
+        t=root;
+        while(t.next!=null){
+            t=t.next;
+        }
+        t.next=head;
+        head.prev=t;
+        return root;
+    }
+}
